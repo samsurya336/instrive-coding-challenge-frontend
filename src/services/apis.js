@@ -10,6 +10,13 @@ export const submitFormApi = async (formData) => {
   bodyContent.append("email", formData.email);
   bodyContent.append("req_file", formData.file);
 
+  // EX to show loading_state
+  await new Promise((resolve) => {
+    setTimeout(() => {
+      resolve();
+    }, 1000);
+  });
+
   const response = await fetch(`${api.baseUrl}/api/v0.1/forms/uploadForm`, {
     method: "POST",
     body: bodyContent,
