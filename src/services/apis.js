@@ -10,24 +10,13 @@ export const submitFormApi = async (formData) => {
   bodyContent.append("email", formData.email);
   bodyContent.append("req_file", formData.file);
 
-  // let response = await fetch(`${api.baseUrl}/api/v0.1/form/uploadForm`, {
-  //   method: "POST",
-  //   body: bodyContent,
-  //   headers: headersList,
-  // });
-
-  // let _data = await response.text();
-
-  const dump = await new Promise((resolve) => {
-    setTimeout(() => {
-      console.log("Promise Done");
-      resolve();
-    }, [5000]);
+  const response = await fetch(`${api.baseUrl}/api/v0.1/forms/uploadForm`, {
+    method: "POST",
+    body: bodyContent,
+    headers: headersList,
   });
 
-  return {
-    success: true,
-    data: {},
-    error: null,
-  };
+  const result = await response.json();
+
+  return result;
 };

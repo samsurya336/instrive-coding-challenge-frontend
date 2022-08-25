@@ -25,7 +25,7 @@ export default function App() {
     submitForm,
   ] = useHandleStates();
 
-  const handleClose = (event, reason) => {
+  const handleClose = (_, reason) => {
     clearSnackBarStatus();
     if (reason === "clickaway") {
       return;
@@ -48,7 +48,7 @@ export default function App() {
   };
 
   return (
-    <Box sx={{ width: "100%" }}>
+    <div sx={{ width: "100%" }}>
       <Box
         sx={{
           borderBottom: 1,
@@ -106,7 +106,6 @@ export default function App() {
             className="file-upload-input-filed"
             disabled={loading}
             onChange={(event) => {
-              console.log("Got the event");
               setFormData("file", event.target.files[0]);
             }}
           />
@@ -162,6 +161,6 @@ export default function App() {
           {snackBarStatus.message}
         </Alert>
       </Snackbar>
-    </Box>
+    </div>
   );
 }

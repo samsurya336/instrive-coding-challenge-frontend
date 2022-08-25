@@ -8,10 +8,10 @@ export const validateEmail = (email) => {
 export const api = {
   baseUrl:
     process.env.REACT_APP_STAGING === "development"
-      ? "https://dev.ngrokexposedapp.in"
+      ? "https://dev.ngrokexposedServer.in"
       : process.env.REACT_APP_STAGING === "uat"
-      ? "https://uat.ngrokexposedapp.in"
+      ? "https://uat.ngrokexposedServer.in"
       : process.env.REACT_APP_STAGING === "production"
-      ? "https://ngrokexposedapp.in"
+      ? "https://ngrokexposedServer.in"
       : "http://localhost:6001",
 };

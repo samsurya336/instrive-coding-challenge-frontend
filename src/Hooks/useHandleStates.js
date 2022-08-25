@@ -64,7 +64,6 @@ function useHandleStates() {
       tempFormData.file = "Please upload a valid XLSX file 2";
     }
     _setFormErrors({ ...tempFormData });
-    console.log(_formData.file);
   }, [_formData]);
 
   const getFormData = (fieldKey) => {
@@ -95,18 +94,18 @@ function useHandleStates() {
 
     try {
       const submitFormApiResponse = await submitFormApi({
-        userName: "",
-        email: "",
-        file: "",
+        userName: _formData.userName,
+        email: _formData.email,
+        file: _formData.file,
       });
 
       if (submitFormApiResponse.status === false) {
-        return throwError(submitFormApiResponse.error.message);
+        return throwError(submitFormApiResponse.message);
       }
 
       setSnackBarStatus({
         type: "success",
-        message: "Successfully Submitted form",
+        message: submitFormApiResponse.data.message,
       });
       setLoading(false);
       _setFormData({
@@ -115,10 +114,12 @@ function useHandleStates() {
         file: null,
       });
     } catch (error) {
-      console.error("Error : ", error);
       setSnackBarStatus({
         type: "error",
-        message: error.message,
+        message:
+          typeof error.message === "string"
+            ? error.message
+            : "Something went wrong",
       });
       setLoading(false);
     }

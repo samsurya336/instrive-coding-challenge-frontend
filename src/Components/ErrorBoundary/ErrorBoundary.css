@@ -1,0 +1,18 @@
+.error-boundary-wrapper {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.error-boundary-button {
+  padding: 10px;
+  border-radius: 0.4em;
+  outline: none;
+  background-color: #1972d2;
+  color: #ffffff;
+  border: none;
+}
